@@ -1,7 +1,11 @@
 Courses::Application.routes.draw do
+
   resources :microposts
 
   resources :users
+  
+  match '/about', to: 'static_pages#about'
+  match '/help', to: 'static_pages#help'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
