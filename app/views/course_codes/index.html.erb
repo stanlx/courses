@@ -1,0 +1,33 @@
+<h1>Listing course_codes</h1>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Code</th>
+    <th>Section</th>
+    <th>Day</th>
+    <th>Times</th>
+    <th>Teacher</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @course_codes.each do |course_code| %>
+  <tr>
+    <td><%= course_code.course_id %></td>
+    <td><%= course_code.code %></td>
+    <td><%= course_code.section %></td>
+    <td><%= course_code.day %></td>
+    <td><%= course_code.times %></td>
+    <td><%= course_code.teacher %></td>
+    <td><%= link_to 'Show', course_code %></td>
+    <td><%= link_to 'Edit', edit_course_code_path(course_code) %></td>
+    <td><%= link_to 'Destroy', course_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Course code', new_course_code_path %>

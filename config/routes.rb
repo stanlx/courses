@@ -1,5 +1,10 @@
 Courses::Application.routes.draw do
 
+  resources :course_codes
+
+  resources :courses
+  match '/courses/:id/course_codes' => 'courses#course_codes'
+
   resources :microposts
 
   resources :users
