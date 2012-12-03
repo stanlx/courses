@@ -7,4 +7,10 @@ class StaticPagesController < ApplicationController
 
   def help
   end
+  
+  def login
+    respond_to do |format|
+      format.html
+    end
+  end
 end

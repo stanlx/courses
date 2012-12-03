@@ -1,9 +1,12 @@
 Courses::Application.routes.draw do
+  root to: 'courses#index'
+  
+  resources :course_users
 
   resources :course_codes
 
   resources :courses
-  match '/courses/:id/course_codes' => 'courses#course_codes'
+  match '/courses/:id/users' => 'courses#students'
 
   resources :microposts
 
@@ -11,6 +14,7 @@ Courses::Application.routes.draw do
   
   match '/about', to: 'static_pages#about'
   match '/help', to: 'static_pages#help'
+  match '/login', to: 'static_pages#login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
