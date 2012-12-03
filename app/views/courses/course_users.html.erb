@@ -1,0 +1,32 @@
+
+<h1> <%= Course.find(params[:id]).name %> </h1>
+<h2> <%= Course.find(params[:id]).course_number %></h2>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+<% @course_users.each do |user| %>
+  <tr>
+    <td><%= user.fname %></td>
+    <td><%= user.lname %></td>
+    <td><%= user.email %></td>
+    <td><%#= link_to 'Show', course_users %></td>
+    <td><%#= link_to 'Edit', '/course_users/' + user %></td>
+    <td><%#= link_to 'Destroy', course_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Course code', new_course_user_path %>

@@ -1,9 +1,9 @@
 class CoursesController < ApplicationController
   respond_to :html, :xml, :json
   
-  def course_codes
-    @course_codes = Course.find(params[:id]).course_codes
-    respond_with @course_codes
+  def course_users
+    @course_users = Course.find(params[:id]).users
+    respond_with @course_users
   end
 
   def index

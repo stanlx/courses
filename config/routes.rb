@@ -6,7 +6,7 @@ Courses::Application.routes.draw do
   resources :course_codes
 
   resources :courses
-  match '/courses/:id/users' => 'courses#students'
+  match '/courses/:id/users' => 'courses#course_users', :as => :cusers
 
   resources :microposts
 

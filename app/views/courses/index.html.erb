@@ -8,6 +8,7 @@
     <th>Offered now</th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 </thead>
 <tbody>
@@ -16,6 +17,7 @@
     <td><%= course.course_number %></td>
     <td><%= course.name %></td>
     <td><%= course.offered_now %></td>
+    <td><%= link_to 'Students', cusers_path(course.id) %></td> 
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
