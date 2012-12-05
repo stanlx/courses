@@ -1,4 +1,12 @@
 Courses::Application.routes.draw do
+  get "login" => "sessions#new", :as => "login"
+  get "logout" => "sessions#destroy", :as => "logout"
+  resources :sessions
+
+  get "sign_up" =>  "auth_users#new", :as => "sign_up"
+#  root to: 'auth_users#new'
+  resources :auth_users
+
   root to: 'courses#index'
   
   resources :course_users
@@ -7,14 +15,16 @@ Courses::Application.routes.draw do
 
   resources :courses
   match '/courses/:id/users' => 'courses#course_users', :as => :cusers
+  match '/courses/:id/add' => 'courses#add_course', :as => :add_course
+  match '/courseuser/:user_id/remove/:course_id' => 'courses#rm_course', :as => :rm_course
 
   resources :microposts
 
-  resources :users
+  resources :users, controller: 'auth_users'
   
   match '/about', to: 'static_pages#about'
   match '/help', to: 'static_pages#help'
-  match '/login', to: 'static_pages#login'
+#  match '/login', to: 'static_pages#login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

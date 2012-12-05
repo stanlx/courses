@@ -9,19 +9,18 @@
     <th>Last Name</th>
     <th>Email</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 </thead>
 <tbody>
 <% @course_users.each do |user| %>
   <tr>
-    <td><%= user.fname %></td>
-    <td><%= user.lname %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
     <td><%= user.email %></td>
-    <td><%#= link_to 'Show', course_users %></td>
-    <td><%#= link_to 'Edit', '/course_users/' + user %></td>
-    <td><%#= link_to 'Destroy', course_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>  <% if current_user.id==user.id %>
+	    <%= link_to 'Remove Me', rm_course_path(current_user.id, params[:id]) %>
+          <% end %>
+    </td>
   </tr>
 <% end %>
 </tbody>

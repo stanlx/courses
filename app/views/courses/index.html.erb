@@ -1,25 +1,35 @@
 <h1>Listing courses</h1>
 
-<table class = "table">
+<table width=100% class = "table">
 <thead>
   <tr>
+    <% if current_user %>
+      <th> </th>
+      <th> </th>
+    <% end %>
     <th>Course number</th>
     <th>Name</th>
-    <th>Offered now</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <% if current_user %>
+      <th></th>
+      <th></th>
+    <% end %>
   </tr>
 </thead>
 <tbody>
 <% @courses.each do |course| %>
   <tr>
+    <% if current_user %>
+      <td> <%= link_to 'Add', add_course_path(course.id) %> </td>
+      <td> <%= link_to 'Remove', rm_course_path(current_user.id, course.id ) %></td>
+    <% end %>
     <td><%= course.course_number %></td>
     <td><%= course.name %></td>
-    <td><%= course.offered_now %></td>
     <td><%= link_to 'Students', cusers_path(course.id) %></td> 
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if current_user %>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </tbody>
